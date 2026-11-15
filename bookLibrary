@@ -1,0 +1,81 @@
+
+# Library Book Borrowing Records
+
+books = ["Python", "Java", "C++", "DS", "DBMS"]
+borrows = [10, 5, 0, 8, 10]
+
+members = ["Rahul", "Amit", "Sam", "Raj", "John"]
+member_borrows = [2, 0, 3, 1, 0]
+
+# Display records
+def display():
+    print("\nBook Records:")
+    for i in range(len(books)):
+        print(books[i], ":", borrows[i])
+
+# Average borrowing by members
+def average():
+    total = sum(member_borrows)
+    avg = total / len(members)
+    print("Average Borrowing:", avg)
+
+# Highest and lowest borrowed books
+def highest_lowest():
+    high = max(borrows)
+    low = min(borrows)
+
+    print("Highest Borrowed:")
+    for i in range(len(books)):
+        if borrows[i] == high:
+            print(books[i], high)
+
+    print("Lowest Borrowed:")
+    for i in range(len(books)):
+        if borrows[i] == low:
+            print(books[i], low)
+
+# Count members with zero borrowing
+def zero_borrow():
+    count = 0
+    for i in member_borrows:
+        if i == 0:
+            count += 1
+
+    print("Zero Borrowing Members:", count)
+
+# Find mode of book borrow counts
+def mode():
+    most = max(set(borrows), key=borrows.count)
+
+    print("Most Common Borrow Count:", most)
+    print("Books with this count:")
+
+    for i in range(len(books)):
+        if borrows[i] == most:
+            print(books[i])
+
+# Main program
+while True:
+    print("\n1. Display")
+    print("2. Average")
+    print("3. Highest and Lowest")
+    print("4. Zero Borrowing Members")
+    print("5. Mode")
+    print("6. Exit")
+
+    ch = int(input("Enter choice: "))
+
+    if ch == 1:
+        display()
+    elif ch == 2:
+        average()
+    elif ch == 3:
+        highest_lowest()
+    elif ch == 4:
+        zero_borrow()
+    elif ch == 5:
+        mode()
+    elif ch == 6:
+        break
+    else:
+        print("Invalid Choice!")
