@@ -1,0 +1,72 @@
+
+# Bubble Sort and Binary Search
+
+marks = []
+
+# Bubble Sort
+def bubble_sort():
+    n = len(marks)
+
+    for i in range(n):
+        for j in range(n-i-1):
+
+            if marks[j] > marks[j+1]:
+                marks[j], marks[j+1] = marks[j+1], marks[j]
+
+    print("Sorted Marks:", marks)
+
+
+# Binary Search
+def binary_search():
+    key = int(input("Enter marks to search: "))
+
+    low = 0
+    high = len(marks) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+
+        if marks[mid] == key:
+            print("Marks Found at Position:", mid)
+            return
+
+        elif key > marks[mid]:
+            low = mid + 1
+
+        else:
+            high = mid - 1
+
+    print("Marks Not Found!")
+
+
+# Main Program
+n = int(input("Enter number of students: "))
+
+for i in range(n):
+    m = int(input("Enter marks: "))
+    marks.append(m)
+
+while True:
+    print("\n--- MENU ---")
+    print("1. Bubble Sort")
+    print("2. Binary Search")
+    print("3. Display Marks")
+    print("4. Exit")
+
+    ch = int(input("Enter choice: "))
+
+    if ch == 1:
+        bubble_sort()
+
+    elif ch == 2:
+        binary_search()
+
+    elif ch == 3:
+        print("Marks:", marks)
+
+    elif ch == 4:
+        print("Program Exited!")
+        break
+
+    else:
+        print("Invalid Choice!")
